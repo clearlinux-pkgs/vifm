@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x99DC5E4DB05F6BE2 (xaizek@posteo.net)
 #
 Name     : vifm
-Version  : 0.11
-Release  : 2
-URL      : https://github.com/vifm/vifm/releases/download/v0.11/vifm-0.11.tar.bz2
-Source0  : https://github.com/vifm/vifm/releases/download/v0.11/vifm-0.11.tar.bz2
-Source1  : https://github.com/vifm/vifm/releases/download/v0.11/vifm-0.11.tar.bz2.asc
+Version  : 0.12
+Release  : 3
+URL      : https://github.com/vifm/vifm/releases/download/v0.12/vifm-0.12.tar.bz2
+Source0  : https://github.com/vifm/vifm/releases/download/v0.12/vifm-0.12.tar.bz2
+Source1  : https://github.com/vifm/vifm/releases/download/v0.12/vifm-0.12.tar.bz2.asc
 Summary  : A filemanager for the console with VIM like keybindings and control.
 Group    : Development/Tools
 License  : GPL-2.0 MIT
@@ -24,10 +24,10 @@ BuildRequires : util-linux
 BuildRequires : vim
 
 %description
-Vifm - vi[m] like file manager
-2001 - 2020
-Version: 0.11
-This file last updated: 24 September, 2020
+Vifm - Vim-like file manager
+2001 - 2021
+Version: 0.12
+This file last updated: 29 September, 2021
 
 %package bin
 Summary: bin components for the vifm package.
@@ -73,23 +73,23 @@ man components for the vifm package.
 
 
 %prep
-%setup -q -n vifm-0.11
-cd %{_builddir}/vifm-0.11
+%setup -q -n vifm-0.12
+cd %{_builddir}/vifm-0.12
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1601674964
+export SOURCE_DATE_EPOCH=1632941177
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -101,11 +101,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1601674964
+export SOURCE_DATE_EPOCH=1632941177
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vifm
-cp %{_builddir}/vifm-0.11/COPYING %{buildroot}/usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/vifm-0.11/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/share/package-licenses/vifm/b37afbbf019200f60b8c5324d31a56d97564b165
+cp %{_builddir}/vifm-0.12/COPYING %{buildroot}/usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/vifm-0.12/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/share/package-licenses/vifm/b37afbbf019200f60b8c5324d31a56d97564b165
 %make_install
 
 %files
@@ -135,6 +135,7 @@ cp %{_builddir}/vifm-0.11/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/s
 /usr/share/vifm/vifmrc
 /usr/share/vifm/vim-doc/doc/tags
 /usr/share/vifm/vim-doc/doc/vifm-app.txt
+/usr/share/vifm/vim-doc/doc/vifm-lua.txt
 /usr/share/vifm/vim/autoload/vifm/colorconv.vim
 /usr/share/vifm/vim/autoload/vifm/edit.vim
 /usr/share/vifm/vim/autoload/vifm/globals.vim

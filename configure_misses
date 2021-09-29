@@ -1,5 +1,5 @@
+Configure miss: XOpenDisplay in -lX11
 Configure miss: direntry_t
 Configure miss: mntent
 Configure miss: stat
 Configure miss: whether _PC_CASE_SENSITIVE is declared
-Configure miss: XOpenDisplay in -lX11
