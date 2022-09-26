@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x99DC5E4DB05F6BE2 (xaizek@posteo.net)
 #
 Name     : vifm
-Version  : 0.12
-Release  : 3
-URL      : https://github.com/vifm/vifm/releases/download/v0.12/vifm-0.12.tar.bz2
-Source0  : https://github.com/vifm/vifm/releases/download/v0.12/vifm-0.12.tar.bz2
-Source1  : https://github.com/vifm/vifm/releases/download/v0.12/vifm-0.12.tar.bz2.asc
+Version  : 0.12.1
+Release  : 4
+URL      : https://github.com/vifm/vifm/releases/download/v0.12.1/vifm-0.12.1.tar.bz2
+Source0  : https://github.com/vifm/vifm/releases/download/v0.12.1/vifm-0.12.1.tar.bz2
+Source1  : https://github.com/vifm/vifm/releases/download/v0.12.1/vifm-0.12.1.tar.bz2.asc
 Summary  : A filemanager for the console with VIM like keybindings and control.
 Group    : Development/Tools
 License  : GPL-2.0 MIT
@@ -25,9 +25,9 @@ BuildRequires : vim
 
 %description
 Vifm - Vim-like file manager
-2001 - 2021
-Version: 0.12
-This file last updated: 29 September, 2021
+2001 - 2022
+Version: 0.12.1
+This file last updated: 21 September 2022
 
 %package bin
 Summary: bin components for the vifm package.
@@ -73,15 +73,15 @@ man components for the vifm package.
 
 
 %prep
-%setup -q -n vifm-0.12
-cd %{_builddir}/vifm-0.12
+%setup -q -n vifm-0.12.1
+cd %{_builddir}/vifm-0.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1632941177
+export SOURCE_DATE_EPOCH=1664230377
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -101,11 +101,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1632941177
+export SOURCE_DATE_EPOCH=1664230377
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vifm
-cp %{_builddir}/vifm-0.12/COPYING %{buildroot}/usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/vifm-0.12/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/share/package-licenses/vifm/b37afbbf019200f60b8c5324d31a56d97564b165
+cp %{_builddir}/vifm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/vifm-%{version}/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/share/package-licenses/vifm/b37afbbf019200f60b8c5324d31a56d97564b165
 %make_install
 
 %files
@@ -122,7 +122,9 @@ cp %{_builddir}/vifm-0.12/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/s
 %defattr(-,root,root,-)
 /usr/share/applications/vifm.desktop
 /usr/share/bash-completion/completions/vifm
+/usr/share/fish/vendor_completions.d/vifm.fish
 /usr/share/pixmaps/vifm.png
+/usr/share/vifm/colors/Default-256.vifm
 /usr/share/vifm/colors/astrell-root.vifm
 /usr/share/vifm/colors/astrell-user.vifm
 /usr/share/vifm/colors/dmilith-root.vifm
