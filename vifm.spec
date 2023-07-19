@@ -7,7 +7,7 @@
 #
 Name     : vifm
 Version  : 0.13
-Release  : 5
+Release  : 6
 URL      : https://github.com/vifm/vifm/releases/download/v0.13/vifm-0.13.tar.bz2
 Source0  : https://github.com/vifm/vifm/releases/download/v0.13/vifm-0.13.tar.bz2
 Source1  : https://github.com/vifm/vifm/releases/download/v0.13/vifm-0.13.tar.bz2.asc
@@ -86,15 +86,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680639347
+export SOURCE_DATE_EPOCH=1689750198
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -106,7 +106,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1680639347
+export SOURCE_DATE_EPOCH=1689750198
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vifm
 cp %{_builddir}/vifm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c || :
@@ -164,7 +164,7 @@ cp %{_builddir}/vifm-%{version}/tests/test-support/stic/LICENSE.txt %{buildroot}
 
 %files doc
 %defattr(0644,root,root,0755)
-%doc /usr/share/doc/vifm/*
+/usr/share/doc/vifm/*
 
 %files license
 %defattr(0644,root,root,0755)
