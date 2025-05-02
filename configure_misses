@@ -1,5 +1,14 @@
 Configure miss: XOpenDisplay in -lX11
+Configure miss: XOpenDisplay in -lX11
 Configure miss: direntry_t
+Configure miss: direntry_t
+Configure miss: gcc option to enable large file support
+Configure miss: gcc option to enable large file support
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: mntent
 Configure miss: mntent
 Configure miss: stat
+Configure miss: stat
+Configure miss: whether _PC_CASE_SENSITIVE is declared
 Configure miss: whether _PC_CASE_SENSITIVE is declared
