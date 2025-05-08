@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x99DC5E4DB05F6BE2 (xaizek@posteo.net)
 #
 Name     : vifm
-Version  : 0.14.1
-Release  : 7
-URL      : https://github.com/vifm/vifm/releases/download/v0.14.1/vifm-0.14.1.tar.bz2
-Source0  : https://github.com/vifm/vifm/releases/download/v0.14.1/vifm-0.14.1.tar.bz2
-Source1  : https://github.com/vifm/vifm/releases/download/v0.14.1/vifm-0.14.1.tar.bz2.asc
+Version  : 0.14.2
+Release  : 8
+URL      : https://github.com/vifm/vifm/releases/download/v0.14.2/vifm-0.14.2.tar.bz2
+Source0  : https://github.com/vifm/vifm/releases/download/v0.14.2/vifm-0.14.2.tar.bz2
+Source1  : https://github.com/vifm/vifm/releases/download/v0.14.2/vifm-0.14.2.tar.bz2.asc
 Source2  : 99DC5E4DB05F6BE2.pkey
 Summary  : A filemanager for the console with VIM like keybindings and control.
 Group    : Development/Tools
@@ -35,8 +35,8 @@ BuildRequires : vim
 %description
 Vifm - Vim-like file manager
 2001 - 2025
-Version: 0.14.1
-This file last updated: 02 May 2025
+Version: 0.14.2
+This file last updated: 07 May 2025
 
 %package bin
 Summary: bin components for the vifm package.
@@ -87,10 +87,10 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 99DC5E4DB05F6BE2' gpg.status
-%setup -q -n vifm-0.14.1
-cd %{_builddir}/vifm-0.14.1
+%setup -q -n vifm-0.14.2
+cd %{_builddir}/vifm-0.14.2
 pushd ..
-cp -a vifm-0.14.1 buildavx2
+cp -a vifm-0.14.2 buildavx2
 popd
 
 %build
@@ -98,7 +98,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1746207612
+export SOURCE_DATE_EPOCH=1746739088
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -152,10 +152,11 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1746207612
+export SOURCE_DATE_EPOCH=1746739088
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vifm
 cp %{_builddir}/vifm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+cp %{_builddir}/vifm-%{version}/COPYING.3party %{buildroot}/usr/share/package-licenses/vifm/696a0188ee94567b1ca37b4335f4300ae903beee || :
 cp %{_builddir}/vifm-%{version}/tests/test-support/stic/LICENSE.txt %{buildroot}/usr/share/package-licenses/vifm/b37afbbf019200f60b8c5324d31a56d97564b165 || :
 export GOAMD64=v2
 GOAMD64=v3
@@ -222,6 +223,7 @@ GOAMD64=v2
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/vifm/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/vifm/696a0188ee94567b1ca37b4335f4300ae903beee
 /usr/share/package-licenses/vifm/b37afbbf019200f60b8c5324d31a56d97564b165
 
 %files man
